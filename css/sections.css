@@ -332,7 +332,7 @@
   box-shadow: 1px 1px 0 #1f1a10;
 }
 
-.hero-card h4 {
+.hero-card h2 {
   font-family: var(--font-display);
   font-size: 15px;
   margin-bottom: 6px;
@@ -1208,7 +1208,7 @@
   /* Barra de estado: en móvil sólo marca + frase final (el capítulo ya
      lo dice la barra de título). El separador y el texto largo se ocultan
      porque con flex-wrap ocuparían tres líneas. */
-  .window-statusbar-inner { font-size: 10px; }
+  .window-statusbar-inner { font-size: 11px; }
   .window-statusbar-inner > :nth-child(2),
   .window-statusbar-inner > :nth-child(3) { display: none; }
 

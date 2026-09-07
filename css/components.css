@@ -222,7 +222,7 @@
 .copy-btn {
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   padding: 3px 8px;
   border: 1px solid var(--crt-cyan);
   background: transparent;
