@@ -1,0 +1,130 @@
+/* Datos del taller: 7 razones y 3 comunidades. */
+/* Fuente única de verdad para render y laboratorio. */
+
+const REASONS = [
+  {
+    id: "deduplicacion",
+    number: "I",
+    title: "Eliminan la repetición (DRY)",
+    principle: "Clean Code · Evitar la duplicación",
+    why: "Sin funciones, el mismo bloque se copia en cada página: formatear un precio, validar un correo, calcular un total. Cada copia es una futura falla: si cambia la regla, hay que cazar cada clon. Una función convierte N copias en UNA sola fuente de verdad.",
+    before: `// ANTES: el mismo formato repetido\necho "$ " . number_format($totalA, 2);\necho "$ " . number_format($totalB, 2);\necho "$ " . number_format($totalC, 2);`,
+    after: `// DESPUÉS: una función, una regla\nfunction formatearPrecio(float $valor): string {\n    return "$ " . number_format($valor, 2);\n}\n\necho formatearPrecio($totalA);\necho formatearPrecio($totalB);`,
+    demoLabel: "Probar formatearPrecio(12500.5)",
+    demoRun: () => "$ " + (12500.5).toLocaleString("en-US", { minimumFractionDigits: 2 }),
+  },
+  {
+    id: "legibilidad",
+    number: "II",
+    title: "Vuelven el código una historia legible",
+    principle: "Clean Code · Funciones pequeñas · Un nivel de abstracción",
+    why: "Una función bien nombrada cuenta qué hace el programa sin obligar a leer cada detalle. procesarPedido() se lee como un titular de periódico; los detalles viven un nivel más abajo. El código se lee 10 veces más de lo que se escribe.",
+    before: `// ANTES: todo mezclado, tres niveles a la vez\n$total = 0;\nforeach ($items as $i) { $total += $i["precio"]; }\n$total = $total - ($total * 0.1);\n$stmt = $db->prepare("INSERT INTO pedidos ...");`,
+    after: `// DESPUÉS: narrativa de arriba hacia abajo\nfunction procesarPedido(array $items): float {\n    $subtotal = calcularSubtotal($items);\n    return aplicarDescuento($subtotal, 10);\n}\n\nfunction calcularSubtotal(array $items): float {\n    return array_sum(array_column($items, "precio"));\n}`,
+    demoLabel: "Probar procesarPedido([100, 50, 25])",
+    demoRun: () => { const s = 100 + 50 + 25; return "Total con 10% dto: $ " + (s * 0.9).toFixed(2); },
+  },
+  {
+    id: "biblioteca",
+    number: "III",
+    title: "Regalan miles de horas: la biblioteca nativa",
+    principle: "PHP.net · +1000 funciones listas y probadas",
+    why: "PHP ya resolvió lo difícil: limpiar texto, validar correos, cifrar claves, manejar fechas y arreglos. Usar la biblioteca es importar décadas de pruebas y seguridad en una línea, en vez de reinventar ruedas cuadradas.",
+    before: `// ANTES: validar un correo a mano (frágil)\n$valido = strpos($email, "@") !== false\n    && strpos($email, ".") !== false;`,
+    after: `// DESPUÉS: funciones nativas, probadas por millones\n$emailLimpio = trim(strtolower($email));\n$valido = filter_var($emailLimpio, FILTER_VALIDATE_EMAIL);\n$clave = password_hash($password, PASSWORD_DEFAULT);\n$hoy = date("Y-m-d");`,
+    demoLabel: "Probar filter_var con 'ana@mail.com'",
+    demoRun: () => "filter_var('ana@mail.com') → válido · trim + strtolower aplicados",
+  },
+  {
+    id: "errores",
+    number: "IV",
+    title: "Aíslan los errores en un solo lugar",
+    principle: "Clean Code · Manejo de errores con excepciones",
+    why: "Cuando la validación vive dispersa, cada formulario falla distinto. Encerrarla en una función permite devolver errores claros o lanzar excepciones en un único punto, y el resto del sistema simplemente confía.",
+    before: `// ANTES: cada formulario valida a su manera\nif ($edad < 0 || $edad > 120) { echo "Error"; }\n// ... en otro archivo, otra regla distinta ...`,
+    after: `// DESPUÉS: un guardián único\nfunction validarEdad(int $edad): void {\n    if ($edad < 0 || $edad > 120) {\n        throw new InvalidArgumentException("Edad fuera de rango");\n    }\n}\n\ntry {\n    validarEdad($edad);\n} catch (InvalidArgumentException $e) {\n    mostrarError($e->getMessage());\n}`,
+    demoLabel: "Probar validarEdad(200)",
+    demoRun: () => "InvalidArgumentException: Edad fuera de rango",
+  },
+  {
+    id: "tests",
+    number: "V",
+    title: "Hacen el código comprobable y reutilizable",
+    principle: "Clean Code · FIRST · SRP",
+    why: "Una función pura (entra un valor, sale un valor) se puede probar en segundos y reutilizar en cualquier módulo: la tienda, el reporte, la API. Sin funciones, probar exige montar todo el sistema.",
+    before: `// ANTES: cálculo atrapado en medio del HTML\n$descuento = $subtotal * 0.15; // ¿y si cambia al 20%?`,
+    after: `// DESPUÉS: función pura + prueba inmediata\nfunction calcularDescuento(float $subtotal, float $pct): float {\n    return $subtotal - ($subtotal * $pct / 100);\n}\n\nassert(calcularDescuento(200, 15) === 170.0);`,
+    demoLabel: "Probar calcularDescuento(200, 15)",
+    demoRun: () => "calcularDescuento(200, 15) = 170.00 · assert pasa",
+  },
+  {
+    id: "flexibilidad",
+    number: "VI",
+    title: "Dan flexibilidad moderna sin complicarse",
+    principle: "PHP 8 · Tipado, defaults, spread, arrow functions",
+    why: "Parámetros con tipo y valor por defecto, funciones variádicas (...$nums) y flecha (fn) permiten una sola función elegante donde antes había cinco versiones rígidas. Menos ramas, menos if, más expresión.",
+    before: `// ANTES: una versión por cada caso\nfunction saludo1($n) { return "Hola " . $n; }\nfunction saludo2($n, $t) { return $t . " " . $n; }`,
+    after: `// DESPUÉS: una sola función flexible\nfunction crearSaludo(string $nombre, string $titulo = "Hola"): string {\n    return "$titulo, $nombre";\n}\n\n$total = array_sum([10, 20, 30]);\n$dobles = array_map(fn($n) => $n * 2, [1, 2, 3]);`,
+    demoLabel: "Probar crearSaludo('García', 'Bienvenida')",
+    demoRun: () => "Bienvenida, García",
+  },
+  {
+    id: "equipo",
+    number: "VII",
+    title: "Escalan el trabajo en equipo",
+    principle: "Clean Code · Contratos claros · SRP",
+    why: "Una función es un contrato: nombre claro, entradas y salida conocidas. Un compañero puede usar registrarUsuario() sin leer su interior, y dos personas pueden avanzar en paralelo sin pisarse. Así se construyen sistemas grandes con piezas pequeñas.",
+    before: `// ANTES: nadie se atreve a tocar este bloque\n// 80 líneas que registran, envían correo y facturan...`,
+    after: `// DESPUÉS: piezas con un solo trabajo\nfunction registrarUsuario(string $nombre, string $email): array {\n    $valido = filter_var(trim($email), FILTER_VALIDATE_EMAIL);\n    if (!$valido) throw new InvalidArgumentException("Email inválido");\n    return guardarUsuario($nombre, $valido);\n}`,
+    demoLabel: "Probar registrarUsuario('Ana', 'ana@mail.com')",
+    demoRun: () => "Usuario { nombre: Ana, email: ana@mail.com } guardado",
+  },
+];
+
+const COMMUNITIES = [
+  {
+    name: "Stack Overflow · etiqueta PHP",
+    url: "https://stackoverflow.com/questions/tagged/php",
+    stamp: "Q & A",
+    purpose: "Preguntas y respuestas curadas por la comunidad: millones de casos reales sobre funciones, errores y biblioteca nativa de PHP.",
+    pros: ["Respuestas en minutos en temas populares", "Votos que separan lo confiable de lo dudoso", "Ejemplos copiables con explicación del porqué"],
+    cons: ["Exige preguntas bien formuladas (cierra duplicadas)", "Gran parte del contenido está en inglés"],
+    innovation: "Collectives de PHP, búsqueda con IA, snippets ejecutables y moderación que convierte hilos en documentación viva.",
+  },
+  {
+    name: "PHP.net · FIG · The PHP Foundation",
+    url: "https://www.php.net/manual/es/language.functions.php",
+    stamp: "OFICIAL",
+    purpose: "La fuente oficial: manual en español del capítulo de funciones, estándares PSR del FIG y el motor del lenguaje con la Fundación PHP.",
+    pros: ["Exactitud total: lo que dice el manual es lo que hace PHP", "Ejemplos verificados por versión (7.x / 8.x)", "RFCs abiertos: se ve el futuro del lenguaje"],
+    cons: ["Tono técnico, poco didáctico para empezar", "Los RFC y PSR exigen inglés técnico"],
+    innovation: "Manual colaborativo con notas de usuarios, PHP 8 (JIT, atributos, enums, match, fibras) y estándares PSR que unifican todo el ecosistema.",
+  },
+  {
+    name: "Laracasts",
+    url: "https://laracasts.com",
+    stamp: "ESCUELA",
+    purpose: "Escuela en video: rutas guiadas de PHP y Laravel donde cada función se aprende construyendo proyectos reales.",
+    pros: ["Rutas de cero a avanzado, paso a paso", "Código descargable y retos por episodio", "Comunidad amable ideal para socializar la evidencia"],
+    cons: ["El catálogo profundo es de pago", "Enfoque fuerte en Laravel, no solo PHP puro"],
+    innovation: "Series interactivas, challenges con revisión, certificados y foros por lección que responden con código.",
+  },
+];
+
+const QUIZ = [
+  { q: "¿Qué función nativa valida un correo sin escribir la lógica a mano?", options: ["filter_var($e, FILTER_VALIDATE_EMAIL)", "strlen($e)", "date('Y-m-d')"], answer: 0 },
+  { q: "Según Clean Code, una función ideal…", options: ["Hace una sola cosa y es pequeña", "Hace todo el módulo para ahorrar archivos", "Mezcla varios niveles de abstracción"], answer: 0 },
+  { q: "¿Qué significa DRY?", options: ["Don't Repeat Yourself: no te repitas", "Do Repeat Yourself: repite todo", "Debug, Run, Yield"], answer: 0 },
+  { q: "¿Dónde está la referencia oficial del capítulo de funciones PHP?", options: ["php.net/manual/es/language.functions.php", "En un hilo aleatorio sin verificar", "Solo en apuntes impresos"], answer: 0 },
+];
+
+/* Frases para decir en vivo al exponer cada razón en la sesión virtual. */
+const SAYS = {
+  deduplicacion: "Escribe una vez, úsala cien veces: si cambia la regla, cambias un solo lugar.",
+  legibilidad: "El código se lee diez veces más de lo que se escribe: que se lea como un titular.",
+  biblioteca: "PHP ya resolvió lo difícil: una línea tuya importa décadas de pruebas.",
+  errores: "Un solo guardián por cada regla: los errores se atrapan en un único punto.",
+  tests: "Si entra un valor y sale un valor, se prueba en segundos y se reutiliza en todo el sistema.",
+  flexibilidad: "Una función flexible reemplaza cinco rígidas: menos ramas, más expresión.",
+  equipo: "Medido en PHP 8: count() tardó ~0,001 ms frente a ~0,976 ms del foreach manual. Menos código propio, menos bugs propios.",
+};

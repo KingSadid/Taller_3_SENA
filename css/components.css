@@ -1,0 +1,283 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Components — estilo Win9x/IE5: botones biselados, ventanas con marco
+   metálico, terminales CRT con scanlines, sellos con doble trazo.
+   ───────────────────────────────────────────────────────────────────── */
+
+/* ——— Panel / ventana biselada retro ——— */
+.panel, .framed, .file-card, .definition, .quiz, .lab, .ticket,
+.postcard, .community-grid > article {
+  position: relative;
+  background: var(--paper-soft);
+  border: 2px solid var(--chrome-edge);
+  border-radius: var(--radius);
+  color: var(--ink);
+  box-shadow: var(--shadow-edge);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
+}
+
+/* Sombra interior — biselado "raised" */
+.framed::before, .file-card::before, .definition::before,
+.quiz::before, .lab::before, .ticket::before,
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-top: 1px solid #fff8e0;
+  border-left: 1px solid #fff8e0;
+  border-right: 1px solid #6b5b35;
+  border-bottom: 1px solid #6b5b35;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Encabezado de "ventana" Win9x con barra de título azul */
+.framed::after, .file-card::after, .definition::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(180deg, var(--chrome-blue-hi), var(--chrome-blue));
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.framed > *, .file-card > *, .definition > *,
+.quiz > *, .lab > *, .ticket > *, .panel > *,
+.postcard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ——— Sello / stamp redondo ——— */
+.seal {
+  width: 110px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 6px, rgba(0,0,0,0.08) 6px 7px),
+    var(--php-blue-dk);
+  border: 3px double var(--paper);
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 0 0 3px var(--php-blue-dk), 2px 3px 0 rgba(0,0,0,0.3);
+  transform: rotate(-7deg);
+}
+
+/* ——— Botones biselados Win9x (raised) ——— */
+.btn {
+  appearance: none;
+  display: inline-block;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 2px solid;
+  border-color: var(--btn-face-hi) var(--btn-edge) var(--btn-edge) var(--btn-face-hi);
+  background: var(--btn-face);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 2px 2px 0 #5a4a20, inset 1px 1px 0 #fff8e0, inset -1px -1px 0 #b8a878;
+  transition: transform 0.12s var(--ease-out), box-shadow 0.12s var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--btn-face-hi);
+  color: var(--ink);
+}
+
+.btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #5a4a20, inset 1px 1px 0 #b8a878, inset -1px -1px 0 #fff8e0;
+  border-color: var(--btn-edge) var(--btn-face-hi) var(--btn-face-hi) var(--btn-edge);
+}
+
+/* Botón "abrir" — azul cromo */
+.btn-wax {
+  background: linear-gradient(180deg, var(--chrome-blue-hi), var(--chrome-blue));
+  color: var(--paper);
+  border-color: #8094c8 var(--chrome-edge) var(--chrome-edge) #8094c8;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.btn-wax:hover {
+  background: linear-gradient(180deg, #7590c9, var(--chrome-blue-hi));
+  color: var(--paper);
+}
+
+/* Botón "firmar" — borde cian sutil */
+.btn-brass {
+  background: var(--crt-screen);
+  color: var(--crt-cyan);
+  border-color: var(--crt-cyan) var(--crt-bg) var(--crt-bg) var(--crt-cyan);
+  text-shadow: 0 0 4px rgba(110, 211, 255, 0.6);
+}
+
+.btn-brass:hover {
+  background: #0d1c33;
+  color: var(--crt-cyan);
+}
+
+/* Botón fantasma — neutro */
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border-color: var(--ink-faint) var(--ink-dim) var(--ink-dim) var(--ink-faint);
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 248, 224, 0.5);
+  color: var(--ink);
+}
+
+/* ——— Etiqueta "comunidad" o chip ——— */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid var(--ink-soft);
+  color: var(--ink-soft);
+  background: rgba(255, 248, 220, 0.5);
+  border-radius: 2px;
+}
+
+/* ——— Bloque de código estilo "ventana con pestaña" ——— */
+.codeblock {
+  position: relative;
+  background: var(--crt-screen);
+  border: 2px solid var(--chrome-edge);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-edge);
+}
+
+.codeblock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 50%, rgba(0,0,0,0.18) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.55;
+}
+
+.codeblock header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--crt-cyan);
+  border-bottom: 1px solid var(--crt-line);
+  background: var(--crt-bg);
+  position: relative;
+  z-index: 1;
+}
+
+.codeblock pre {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--crt-text);
+  position: relative;
+  z-index: 1;
+}
+
+/* Resaltado estilo CRT */
+.tok-k { color: var(--crt-pink);    font-weight: 700; }      /* keywords */
+.tok-f { color: var(--crt-amber);   font-weight: 600; }      /* funciones */
+.tok-v { color: var(--crt-mint);    font-style: italic; }    /* variables */
+.tok-s { color: var(--crt-yellow); }                          /* strings */
+.tok-c { color: var(--crt-php);     font-style: italic; opacity: 0.85; } /* comentarios */
+
+/* ——— Botón copiar incrustado ——— */
+.copy-btn {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--crt-cyan);
+  background: transparent;
+  color: var(--crt-cyan);
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: var(--crt-cyan);
+  color: var(--crt-bg);
+}
+
+/* ——— Lift táctil en tarjetas ——— */
+@media (hover: hover) and (pointer: fine) {
+  .file-card:hover, .ticket:hover, .definition:hover,
+  .quiz:hover, .lab:hover, .postcard:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #1f1a10;
+  }
+}
+
+/* ——— Nota adhesiva amarilla ——— */
+.sticky {
+  position: relative;
+  background: var(--postit);
+  background-image:
+    linear-gradient(135deg, transparent 60%, rgba(0,0,0,0.04) 60%, rgba(0,0,0,0.04) 61%, transparent 61%);
+  border: 1px solid var(--postit-edge);
+  color: var(--postit-ink);
+  font-family: var(--font-hand);
+  font-size: 22px;
+  line-height: 1.2;
+  padding: 18px 16px;
+  box-shadow:
+    2px 3px 6px rgba(0,0,0,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+  transform: rotate(-2deg);
+}
+
+.sticky::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 60px;
+  height: 14px;
+  background: rgba(255, 235, 150, 0.55);
+  border: 1px solid rgba(180, 140, 40, 0.3);
+  transform: translateX(-50%) rotate(-1deg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Variantes de posición: se centran solas en móvil (ver sección Responsivo) */
+.sticky-right { align-self: flex-end;  max-width: 240px; }
+.sticky-left  { align-self: flex-start; max-width: 200px; margin-top: -10px; transform: rotate(2deg); }

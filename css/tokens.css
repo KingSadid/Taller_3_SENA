@@ -1,0 +1,76 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Tokens — Estilo "PHP · El lenguaje que impulsa la web"
+   Estética: navegador retro Win9x/IE5, marcos biselados, papel crema,
+   terminales CRT verdes/cian, notas adhesivas amarillas, trazo manuscrito.
+   ───────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ——— Beige/papel cálido tipo "papel de cuaderno envejecido" ——— */
+  --paper:        #efe6cf;
+  --paper-soft:   #e7dcbf;
+  --paper-deep:   #d9cca7;
+  --paper-edge:   #c8b888;
+
+  /* ——— Azul de cromo (marcos metálicos del navegador retro) ——— */
+  --chrome-blue:    #3a4f8a;
+  --chrome-blue-hi: #5872b8;
+  --chrome-blue-dk: #1f2d54;
+  --chrome-edge:    #0e1633;
+
+  /* ——— Acentos manuscritos y decoraciones ——— */
+  --ink:        #222018;
+  --ink-soft:   #4a4233;
+  --ink-dim:    #746857;
+  --ink-faint:  #a0937a;
+
+  /* ——— Terminales CRT (consola PHP `<¿php ?>` y bloques "Ejemplo") ——— */
+  --crt-bg:      #06090f;
+  --crt-screen:  #0a1426;
+  --crt-line:    #1a2a44;
+  --crt-text:    #c8d6f0;
+  --crt-php:     #7c8bc7;
+  --crt-cyan:    #6ed3ff;
+  --crt-mint:    #80f0c0;
+  --crt-amber:   #f3c66b;
+  --crt-pink:    #f48fb1;
+  --crt-yellow:  #f4e16f;
+
+  /* ——— Sello / Post-it ——— */
+  --postit:       #f7d774;
+  --postit-soft:  #f9e29a;
+  --postit-edge:  #c89e2c;
+  --postit-ink:   #5a3f10;
+
+  /* ——— Acentos tono PHP (azul realzado, en homenaje al logo de la imagen) ——— */
+  --php-blue:     #2c3e80;
+  --php-blue-hi:  #4863b9;
+  --php-blue-dk:  #16224a;
+  --php-cream:    #f5ecd1;
+
+  /* ——— Botones retro tipo Win9x ——— */
+  --btn-face:    #ece4c9;
+  --btn-face-hi: #f7f0d6;
+  --btn-face-dk: #c8b888;
+  --btn-edge:    #8b7a45;
+
+  /* ——— Tipografías ——— */
+  --font-type:     "Courier New", "Consolas", "Monaco", monospace;
+  --font-display:  "Times New Roman", "Georgia", "Cambria", serif;
+  --font-body:     "Times New Roman", "Georgia", "Cambria", serif;
+  --font-mono:     "Courier New", "Consolas", "Monaco", monospace;
+  --font-hand:     "Caveat", "Bradley Hand", "Comic Sans MS", cursive;
+
+  /* ——— Medidas ——— */
+  --max-width:     1100px;
+  --radius:        4px;
+  --radius-sm:     3px;
+
+  /* ——— Sombras retro (rectangulares, sin blur de cristal) ——— */
+  --shadow-bevel-hi: inset  1px  1px 0 #ffffff, inset -1px -1px 0 #746855;
+  --shadow-bevel-dk: inset -1px -1px 0 #ffffff, inset  1px  1px 0 #746855;
+  --shadow-edge:    2px 2px 0 #1f1a10;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}

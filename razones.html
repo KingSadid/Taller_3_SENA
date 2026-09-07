@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capítulo II · 7 Razones — Funciones PHP</title>
+  <meta name="description" content="7 razones para usar funciones en PHP, cada una con ejemplo. Evidencia AA3.">
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+
+  <div class="loader" id="loader" role="status" aria-label="Cargando presentación">
+    <div class="loader-box">
+      <div class="brand">núcleo <b>PHP 8</b> · Funciones</div>
+      <div class="loader-type" id="loaderType">Inicializando runtime…</div>
+      <div class="loader-bar"><i id="loaderBar"></i></div>
+    </div>
+  </div>
+
+  <div class="window-titlebar">
+    <div class="window-titlebar-inner">
+      <picture class="window-logo">
+        <source srcset="assets/img/php-logo.png" media="(min-width: 480px)">
+        <img src="assets/img/php-logo@2x.png" alt="Logo del lenguaje PHP: óvalo azul con el texto php en cursiva" width="64" height="42">
+      </picture>
+      <span class="window-icon" aria-hidden="true">🌐</span>
+      <span class="window-title">PHP — Capítulo II · 7 Razones</span>
+      <span class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></span>
+    </div>
+    <div class="window-toolbar">
+      <div class="toolbar-row">
+        <button class="tool-btn" aria-label="Atrás">←</button>
+        <button class="tool-btn" aria-label="Adelante">→</button>
+        <button class="tool-btn" aria-label="Inicio">🏠</button>
+        <div class="url-bar">
+          <span>🌐</span>
+          <input type="text" value="https://www.php.net/manual/es/language.functions.php" aria-label="Dirección" disabled>
+        </div>
+        <button class="tool-btn" aria-label="Buscar">🔍</button>
+      </div>
+      <div class="window-tabs">
+        <nav class="nav-links" aria-label="Capítulos">
+          <a href="index.html">Portada</a>
+          <a href="manifiesto.html">Manifiesto</a>
+          <a href="razones.html" class="active">Razones</a>
+          <a href="laboratorio.html">Laboratorio</a>
+          <a href="comunidades.html">Comunidades</a>
+          <a href="evaluacion.html">Evaluación</a>
+        </nav>
+      </div>
+    </div>
+    <div class="progress-ribbon"><i id="progressBar"></i></div>
+  </div>
+
+  <main>
+    <section class="chapter wrap" id="razones" data-chapter>
+      <p class="kicker reveal">Capítulo II · El cuerpo del delito contra el “copiar-pegar”</p>
+      <h2 class="chapter-title reveal">7 razones para no volver a repetir código</h2>
+      <p class="chapter-sub reveal">Cada expediente trae el <b>Antes</b> (código repetido), el <b>Después</b> (función limpia), la frase para decir en vivo y una <b>demo ejecutable</b>. Pulsa “▶ Ejecutar demo”.</p>
+      <div class="rule"></></div>
+      <div id="reasonsMount"></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="manifiesto.html" style="text-decoration:none">← Manifiesto</a>
+        <a class="btn btn-wax" href="laboratorio.html" style="text-decoration:none">Siguiente: Laboratorio →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Statusbar estilo barra inferior del navegador -->
+  <div class="window-statusbar">
+    <div class="wrap window-statusbar-inner">
+      <span>🌐 PHP 8.x</span>
+      <span>|</span>
+      <span>Capítulo II · 7 razones para usar funciones</span>
+      <span style="margin-left:auto">❤ Código + Ideas = Grandes cosas</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand">Núcleo<b>PHP</b> · Edición Neofuturista</div>
+        <p>Evidencia AA3 · Sesión virtual “Funciones PHP”. Contenido verificado contra el <a href="https://www.php.net/manual/es/language.functions.php" target="_blank" rel="noopener">manual oficial de PHP</a> y los principios de <i>Clean Code</i> (R. C. Martin).</p>
+      </div>
+      <div>
+        <p><b>Ficha de archivo</b></p>
+        <p style="font-family:var(--font-type);font-size:14px;letter-spacing:.02em">Autor: <span data-author>Tu Nombre Completo</span><br>Programa: Análisis y Desarrollo de Software · SENA</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/codelab.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

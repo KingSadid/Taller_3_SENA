@@ -1,0 +1,167 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Base — fondo crema con textura sutil, tipografía serif tipo libro
+   antiguo, scrollbar azul metálico.
+   ───────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* Deja aire para la cabecera fija (titlebar + toolbar + pestañas) */
+  scroll-padding-top: 120px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  /* Evita que una palabra larga desborde en pantallas estrechas */
+  overflow-wrap: break-word;
+  background-color: var(--paper);
+  background-image:
+    /* grano sutil de papel */
+    radial-gradient(circle at 20% 20%, rgba(160, 130, 60, 0.10) 1px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(160, 130, 60, 0.08) 1px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(120, 90, 30, 0.05) 1px, transparent 2px),
+    /* viñeta suave */
+    radial-gradient(ellipse at center, transparent 50%, rgba(120, 95, 50, 0.18) 100%);
+  background-size: 7px 7px, 9px 9px, 11px 11px, 100% 100%;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--chrome-blue); color: var(--paper); }
+
+/* Scrollbar retro azul metálico */
+html { scrollbar-color: var(--chrome-blue-hi) var(--paper-deep); }
+
+::-webkit-scrollbar { width: 14px; height: 14px; }
+
+::-webkit-scrollbar-track {
+  background: var(--paper-deep);
+  border: 1px solid var(--paper-edge);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--chrome-blue-hi), var(--chrome-blue-dk));
+  border: 1px solid var(--chrome-edge);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7d97d8, #2c3e80);
+}
+
+img { max-width: 100%; }
+
+a {
+  color: var(--php-blue);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+a:hover { color: var(--php-blue-hi); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  margin: 0;
+  font-weight: 700;
+  text-wrap: balance;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+p { margin: 0 0 1.1em; }
+
+.wrap {
+  width: min(var(--max-width), calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.chapter {
+  position: relative;
+  padding: 36px 0 44px;
+}
+
+/* ——— Kicker estilo comentario de código, tinta desvanecida ——— */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--ink-dim);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+}
+
+.kicker::before { content: "//"; color: var(--ink-faint); font-weight: 700; }
+.kicker::after  { content: ""; height: 1px; width: 48px; background: linear-gradient(90deg, var(--ink-faint), transparent); }
+
+.chapter-title {
+  font-size: clamp(30px, 4.4vw, 46px);
+  font-weight: 700;
+  margin: 6px 0 6px;
+  color: var(--ink);
+}
+
+.chapter-sub {
+  font-size: clamp(15px, 1.9vw, 19px);
+  color: var(--ink-soft);
+  max-width: 60ch;
+  font-family: var(--font-body);
+  font-style: italic;
+}
+
+.chapter-sub b { color: var(--ink); font-style: normal; }
+
+/* ——— Regla divisoria tipo sello ——— */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 0;
+  color: var(--ink-dim);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+.rule::before, .rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--ink-faint), transparent);
+}
+
+/* ——— Foco visible ——— */
+:focus-visible {
+  outline: 2px dashed var(--php-blue);
+  outline-offset: 3px;
+}
+
+/* ——— Reducción de movimiento ——— */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .chapter { padding: 26px 0 32px; }
+}
+
+@media (max-width: 480px) {
+  .wrap { width: calc(100% - 24px); }
+  .chapter-title { font-size: clamp(24px, 7vw, 46px); }
+}

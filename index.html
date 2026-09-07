@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHP · El lenguaje que impulsa la web — Portada</title>
+  <meta name="description" content="Presentación interactiva estilo navegador retro: Funciones PHP, Evidencia AA3. Portada.">
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+
+  <div class="loader" id="loader" role="status" aria-label="Cargando presentación">
+    <div class="loader-box">
+      <div class="brand">php · <b>El lenguaje que impulsa la web</b></div>
+      <div class="loader-type" id="loaderType">Cargando php.net 8.x…</div>
+      <div class="loader-bar"><i id="loaderBar"></i></div>
+    </div>
+  </div>
+
+  <!-- Barra de título del navegador retro -->
+  <div class="window-titlebar">
+    <div class="window-titlebar-inner">
+      <picture class="window-logo">
+        <source srcset="assets/img/php-logo.png" media="(min-width: 480px)">
+        <img src="assets/img/php-logo@2x.png" alt="Logo del lenguaje PHP: óvalo azul con el texto php en cursiva" width="64" height="42">
+      </picture>
+      <span class="window-icon" aria-hidden="true">🌐</span>
+      <span class="window-title">PHP — El lenguaje que impulsa la web</span>
+      <span class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></span>
+    </div>
+    <!-- Barra de herramientas / URL -->
+    <div class="window-toolbar">
+      <div class="toolbar-row">
+        <button class="tool-btn" aria-label="Atrás">←</button>
+        <button class="tool-btn" aria-label="Adelante">→</button>
+        <button class="tool-btn" aria-label="Inicio">🏠</button>
+        <div class="url-bar">
+          <span>🌐</span>
+          <input type="text" value="https://www.php.net" aria-label="Dirección" disabled>
+        </div>
+        <button class="tool-btn" aria-label="Buscar">🔍</button>
+      </div>
+      <!-- Pestañas de capítulos -->
+      <div class="window-tabs">
+        <nav class="nav-links" aria-label="Capítulos">
+          <a href="index.html" class="active">Portada</a>
+          <a href="manifiesto.html">Manifiesto</a>
+          <a href="razones.html">Razones</a>
+          <a href="laboratorio.html">Laboratorio</a>
+          <a href="comunidades.html">Comunidades</a>
+          <a href="evaluacion.html">Evaluación</a>
+        </nav>
+      </div>
+    </div>
+    <div class="progress-ribbon"><i id="progressBar"></i></div>
+  </div>
+
+  <main>
+    <section class="chapter hero wrap" id="portada" data-chapter>
+      <div class="imprint" aria-label="Pie de imprenta">
+        <span>Generado en runtime · Núcleo PHP</span>
+        <span>Evidencia AA3 · Funciones PHP</span>
+      </div>
+
+      <div class="imprint" style="margin-top:10px" aria-label="Run banner">
+        <span>Del servidor a tu navegador</span>
+        <span>PHP 8.x · Simple. Potente. Flexible.</span>
+      </div>
+
+      <div class="hero-stage">
+        <div>
+          <div class="hero-issue">
+            <span>Runtime · PHP 8</span>
+            <span>Sesión virtual · AA3</span>
+          </div>
+
+          <p class="kicker">Evidencia · Actividad de aprendizaje 3</p>
+          <h1 class="hero-behemoth">Funciones <em>PHP</em></h1>
+          <p class="hero-dek">El lenguaje de programación para la web — <b>simple, potente y flexible</b>.</p>
+
+          <div class="hero-window">
+            <header class="window-tab"><span>¿Qué es PHP?</span><span class="wc">— □ ×</span></header>
+            <div class="window-body">
+              <p>PHP es un lenguaje de programación de código abierto, especialmente diseñado para el desarrollo web. Se ejecuta en el servidor y permite crear páginas dinámicas, interactivas y conectadas a bases de datos.</p>
+            </div>
+          </div>
+
+          <div class="hero-window">
+            <header class="window-tab"><span>Ejemplo:</span><span class="wc">— □ ×</span></header>
+            <div class="window-body example-body">
+              <pre><code><span class="tok-k">&lt;?php</span>
+  <span class="tok-k">echo</span> <span class="tok-s">"¡Hola, mundo!"</span>;
+<span class="tok-k">?&gt;</span></code></pre>
+            </div>
+          </div>
+
+          <div class="hero-ledger">
+            <div>
+              <small>Autor — haz clic y escribe tu nombre</small>
+              <div contenteditable="true" data-author spellcheck="false">Tu Nombre Completo</div>
+            </div>
+            <div>
+              <small>Programa de formación</small>
+              <div contenteditable="true" spellcheck="false">Análisis y Desarrollo de Software · SENA</div>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-wax" href="razones.html" style="text-decoration:none">Abrir el expediente →</a>
+            <a class="hero-link" href="https://www.php.net/manual/es/language.functions.php" target="_blank" rel="noopener">Manual oficial PHP →</a>
+          </div>
+
+          <div class="rule"></div>
+          <p style="font-size:17px;color:var(--ink-soft);font-family:var(--font-type);letter-spacing:.04em">Propósito: analizar colectivamente la pertinencia y utilidad de las funciones PHP — propias y de la biblioteca — para dejar de repetir código y desarrollar más rápido.</p>
+        </div>
+
+        <div class="stage-side">
+          <!-- Logo PHP oficial (imagen recortada con fondo transparente) -->
+          <figure class="plate framed reveal" aria-label="Logo PHP">
+            <picture>
+              <source srcset="assets/img/php-logo.png" media="(min-width: 480px)">
+              <img src="assets/img/php-logo@2x.png"
+                   alt="Logo oficial del lenguaje PHP: óvalo azul con el texto php en cursiva color crema"
+                   width="256" height="168">
+            </picture>
+            <figcaption>PHP · El lenguaje que impulsa la web</figcaption>
+          </figure>
+
+          <!-- Computadora CRT -->
+          <figure class="plate framed reveal" aria-label="Computadora CRT">
+            <svg viewBox="0 0 400 360" role="img" aria-label="Computadora con consola PHP">
+              <defs>
+                <linearGradient id="beigeGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#d9cca7"/>
+                  <stop offset="1" stop-color="#b8a878"/>
+                </linearGradient>
+                <linearGradient id="crtScreen" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#3a4f8a"/>
+                  <stop offset="1" stop-color="#1f2d54"/>
+                </linearGradient>
+              </defs>
+              <!-- Monitor -->
+              <rect x="60" y="40" width="280" height="200" rx="14" fill="url(#beigeGrad)" stroke="#1f1a10" stroke-width="3"/>
+              <rect x="74" y="54" width="252" height="172" rx="6" fill="url(#crtScreen)"/>
+              <!-- Texto en pantalla -->
+              <text x="200" y="120" text-anchor="middle" font-family="'Courier New', monospace" font-size="22" font-weight="700" fill="#c8d6f0">&lt;?php</text>
+              <text x="200" y="160" text-anchor="middle" font-family="'Courier New', monospace" font-size="22" font-weight="700" fill="#80f0c0">?&gt;</text>
+              <!-- Scanlines -->
+              <line x1="74" y1="78" x2="326" y2="78" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="74" y1="92" x2="326" y2="92" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="74" y1="106" x2="326" y2="106" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <!-- Base del monitor -->
+              <rect x="100" y="240" width="200" height="20" rx="3" fill="url(#beigeGrad)" stroke="#1f1a10" stroke-width="2"/>
+              <rect x="160" y="260" width="80" height="14" fill="#1f1a10"/>
+              <rect x="60" y="274" width="280" height="22" rx="4" fill="url(#beigeGrad)" stroke="#1f1a10" stroke-width="3"/>
+              <!-- Teclado -->
+              <rect x="40" y="296" width="320" height="14" rx="3" fill="#d9cca7" stroke="#1f1a10" stroke-width="2"/>
+              <!-- Líneas de teclas -->
+              <line x1="80" y1="303" x2="320" y2="303" stroke="#8b7a45" stroke-width="1"/>
+              <!-- Mouse -->
+              <ellipse cx="370" cy="320" rx="14" ry="9" fill="#d9cca7" stroke="#1f1a10" stroke-width="2"/>
+              <line x1="370" y1="316" x2="370" y2="324" stroke="#1f1a10" stroke-width="1"/>
+              <!-- Anotación manuscrita -->
+              <text x="220" y="22" font-family="'Caveat', cursive" font-size="22" font-weight="700" fill="#5a3f10" transform="rotate(-8 220 22)">Del servidor</text>
+              <text x="240" y="44" font-family="'Caveat', cursive" font-size="22" font-weight="700" fill="#5a3f10" transform="rotate(-6 240 44)">a tu navegador</text>
+              <path d="M218 28 Q 200 50 175 60" stroke="#5a3f10" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+            </svg>
+            <figcaption>Del servidor a tu navegador</figcaption>
+          </figure>
+
+          <!-- Tres columnas de bullets -->
+          <div class="hero-cards">
+            <div class="hero-card framed">
+              <div class="hero-card-icon"><span>⚙</span></div>
+              <h4>Características</h4>
+              <ul>
+                <li>Fácil de aprender</li>
+                <li>Multiplataforma</li>
+                <li>Gran comunidad</li>
+                <li>Integración con bases de datos</li>
+              </ul>
+            </div>
+            <div class="hero-card framed">
+              <div class="hero-card-icon"><span>⚡</span></div>
+              <h4>Ventajas</h4>
+              <ul>
+                <li>Alto rendimiento</li>
+                <li>Gratuito</li>
+                <li>Soporte continuo</li>
+                <li>Escalable</li>
+              </ul>
+            </div>
+            <div class="hero-card framed">
+              <div class="hero-card-icon"><span>🌐</span></div>
+              <h4>Aplicaciones</h4>
+              <ul>
+                <li>Sitios web dinámicos</li>
+                <li>Sistemas de gestión</li>
+                <li>Comercio electrónico</li>
+                <li>APIs y más…</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sello redondo rojo/oficial -->
+          <div class="seal stamp-in">PHP 8 · Código limpio</div>
+
+          <!-- Notas adhesivas manuscritas -->
+          <div class="sticky sticky-right">
+            PHP · El motor de millones de sitios web
+          </div>
+          <div class="sticky sticky-left">
+            PHP · Hace que la web funcione
+          </div>
+        </div>
+      </div>
+
+      <div class="dossier-row">
+        <div class="ticket framed reveal">
+          <span class="tag">Índice del expediente</span>
+          <h3>Lo que contiene este archivo</h3>
+          <ol>
+            <li><a href="manifiesto.html">Manifiesto: ¿qué es una función?</a></li>
+            <li><a href="razones.html">7 razones + ejemplo PHP c/u</a></li>
+            <li><a href="laboratorio.html">Laboratorio ejecutable</a></li>
+            <li><a href="comunidades.html">3 comunidades expertas</a></li>
+            <li><a href="evaluacion.html">Autoevaluación del criterio</a></li>
+          </ol>
+        </div>
+        <div class="ticket framed reveal">
+          <span class="tag">Criterio de evaluación</span>
+          <h3>“Reconoce la utilidad de las funciones de la biblioteca PHP en la codificación del sistema”</h3>
+          <p style="font-size:16px">Cada razón cita funciones nativas (<i>number_format, filter_var, password_hash, array_map, date…</i>) y la visita cierra con quiz calificable.</p>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:26px;flex-wrap:wrap">
+        <a class="btn btn-wax" href="manifiesto.html" style="text-decoration:none">Siguiente: Manifiesto →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer estilo barra de estado del navegador -->
+  <div class="window-statusbar">
+    <div class="wrap window-statusbar-inner">
+      <span>🌐 PHP 8.x</span>
+      <span>|</span>
+      <span>Más que un lenguaje, una herramienta para crear.</span>
+      <span style="margin-left:auto">❤ Código + Ideas = Grandes cosas</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand">Núcleo<b>PHP</b> · Edición Navegador Retro</div>
+        <p>Evidencia AA3 · Sesión virtual “Funciones PHP”. Contenido verificado contra el <a href="https://www.php.net/manual/es/language.functions.php" target="_blank" rel="noopener">manual oficial de PHP</a> y los principios de <i>Clean Code</i> (R. C. Martin): funciones pequeñas, una sola responsabilidad, DRY, nombres con intención.</p>
+        <p style="font-family:var(--font-type);font-size:12px;letter-spacing:.14em">Referencias: php.net · Stack Overflow etiqueta PHP · PHP-FIG (PSR) · The PHP Foundation · Laracasts</p>
+      </div>
+      <div>
+        <p><b>Ficha de archivo</b></p>
+        <p style="font-family:var(--font-type);font-size:14px;letter-spacing:.02em">Autor: <span data-author>Tu Nombre Completo</span><br>Programa: Análisis y Desarrollo de Software · SENA<br>Pieza: presentación interactiva HTML/CSS/JS · Taller_3/</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/codelab.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

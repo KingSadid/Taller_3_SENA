@@ -1,0 +1,32 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Effects — revelado suave, parpadeo de cursor CRT, scrollbar.
+   ───────────────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Swap del bloque de código */
+.codeblock pre.swap { animation: fadeThrough 0.25s var(--ease-out); }
+
+@keyframes fadeThrough {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ——— Cursor CRT parpadeante ——— */
+.caret { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ——— Animación de sello "estampado" ——— */
+@keyframes stampIn {
+  0%   { opacity: 0; transform: scale(2) rotate(-7deg); }
+  60%  { opacity: 1; transform: scale(0.92) rotate(-7deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-7deg); }
+}
+
+.stamp-in { animation: stampIn 0.55s var(--ease-out); }
